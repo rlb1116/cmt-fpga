@@ -1,0 +1,98 @@
+Info: Starting: Create simulation model
+Info: qsys-generate /home2/rlb1116/pca/fpmult64.qsys --simulation=VHDL --allow-mixed-language-simulation --output-directory=/home2/rlb1116/pca/fpmult64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/fpmult64.qsys
+Progress: Reading input file
+Progress: Adding fp_functions_0 [altera_fp_functions 16.0]
+Progress: Parameterizing module fp_functions_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: fpmult64: "Transforming system: fpmult64"
+Info: fpmult64: Running transform generation_view_transform
+Info: fpmult64: Running transform generation_view_transform took 0.000s
+Info: fp_functions_0: Running transform generation_view_transform
+Info: fp_functions_0: Running transform generation_view_transform took 0.000s
+Info: fpmult64: Running transform merlin_avalon_transform
+Info: fpmult64: Running transform merlin_avalon_transform took 0.025s
+Info: fpmult64: "Naming system components in system: fpmult64"
+Info: fpmult64: "Processing generation queue"
+Info: fpmult64: "Generating: fpmult64"
+Info: fpmult64: "Generating: fpmult64_altera_fp_functions_160_py4gazy"
+Info: fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name fpmult64_altera_fp_functions_160_py4gazy -noChanValid -enable -enableHardFP 1 -printMachineReadable -lang VHDL -correctRounding -speedgrade 1 FPMul 11 52
+Info: fp_functions_0: Latency on Arria 10 is 10 cycles
+Info: fp_functions_0: DSP Blocks Used: 8
+Info: fp_functions_0: LUTs Used: 887
+Info: fp_functions_0: Memory Bits Used: 0
+Info: fp_functions_0: Memory Blocks Used: 0
+Info: fpmult64: Done "fpmult64" with 2 modules, 4 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/home2/rlb1116/pca/fpmult64/fpmult64.spd --output-directory=/home2/rlb1116/pca/fpmult64/sim/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=/home2/rlb1116/pca/fpmult64/fpmult64.spd --output-directory=/home2/rlb1116/pca/fpmult64/sim/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in /home2/rlb1116/pca/fpmult64/sim/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Skipping VCS script generation since VHDL file $QUARTUS_INSTALL_DIR/eda/sim_lib/altera_syn_attributes.vhd is required for simulation
+Info: Generating the following file(s) for VCSMX simulator in /home2/rlb1116/pca/fpmult64/sim/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in /home2/rlb1116/pca/fpmult64/sim/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in /home2/rlb1116/pca/fpmult64/sim/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home2/rlb1116/pca/fpmult64.qsys --block-symbol-file --output-directory=/home2/rlb1116/pca/fpmult64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/fpmult64.qsys
+Progress: Reading input file
+Progress: Adding fp_functions_0 [altera_fp_functions 16.0]
+Progress: Parameterizing module fp_functions_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home2/rlb1116/pca/fpmult64.qsys --synthesis=VHDL --greybox --output-directory=/home2/rlb1116/pca/fpmult64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/fpmult64.qsys
+Progress: Reading input file
+Progress: Adding fp_functions_0 [altera_fp_functions 16.0]
+Progress: Parameterizing module fp_functions_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: fpmult64.fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name none -noChanValid -enable -enableHardFP 1 -printMachineReadable -noFileGenerate -correctRounding -speedgrade 1 FPMul 11 52
+Info: fpmult64: "Transforming system: fpmult64"
+Info: fpmult64: Running transform generation_view_transform
+Info: fpmult64: Running transform generation_view_transform took 0.000s
+Info: fp_functions_0: Running transform generation_view_transform
+Info: fp_functions_0: Running transform generation_view_transform took 0.000s
+Info: fpmult64: Running transform merlin_avalon_transform
+Info: fpmult64: Running transform merlin_avalon_transform took 0.008s
+Info: fpmult64: "Naming system components in system: fpmult64"
+Info: fpmult64: "Processing generation queue"
+Info: fpmult64: "Generating: fpmult64"
+Info: fpmult64: "Generating: fpmult64_altera_fp_functions_160_py4gazy"
+Info: fp_functions_0: /tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_functions/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name fpmult64_altera_fp_functions_160_py4gazy -noChanValid -enable -enableHardFP 1 -printMachineReadable -lang VHDL -correctRounding -speedgrade 1 FPMul 11 52
+Info: fp_functions_0: Latency on Arria 10 is 10 cycles
+Info: fp_functions_0: DSP Blocks Used: 8
+Info: fp_functions_0: LUTs Used: 887
+Info: fp_functions_0: Memory Bits Used: 0
+Info: fp_functions_0: Memory Blocks Used: 0
+Info: fpmult64: Done "fpmult64" with 2 modules, 4 files
+Info: Generating third-party timing and resource estimation model ...
+Info: Done generating third-party timing and resource estimation model.
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2019.03.26.19:18:40"
+ outputDirectory="/home2/rlb1116/pca/fpacc64/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Arria 10"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10AX048E1F29E1SG"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="ao" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="" />
+   <port name="ao" direction="output" role="ao" width="1" />
+  </interface>
+  <interface name="areset" kind="reset" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="areset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="en" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="" />
+   <port name="en" direction="input" role="en" width="1" />
+  </interface>
+  <interface name="n" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="areset" />
+   <port name="n" direction="input" role="n" width="1" />
+  </interface>
+  <interface name="r" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="" />
+   <port name="r" direction="output" role="r" width="64" />
+  </interface>
+  <interface name="x" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="areset" />
+   <port name="x" direction="input" role="x" width="64" />
+  </interface>
+  <interface name="xo" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="" />
+   <port name="xo" direction="output" role="xo" width="1" />
+  </interface>
+  <interface name="xu" kind="conduit" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="" />
+   <port name="xu" direction="output" role="xu" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="fpacc64" version="1.0" name="fpacc64">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="1553627919" />
+  <parameter name="AUTO_DEVICE" value="10AX048E1F29E1SG" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Arria 10" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
+  <generatedFiles>
+   <file
+       path="/home2/rlb1116/pca/fpacc64/synth/fpacc64.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home2/rlb1116/pca/fpacc64/synth/fpacc64.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="/home2/rlb1116/pca/fpacc64.qsys" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_acc_custom/source/altera_fp_acc_custom_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="fpacc64">"Generating: fpacc64"</message>
+   <message level="Info" culprit="fpacc64">"Generating: fpacc64_altera_fp_acc_custom_160_bhzzlly"</message>
+   <message level="Debug" culprit="fp_acc_custom_0">/tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_acc_custom/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name fpacc64_altera_fp_acc_custom_160_bhzzlly -noChanValid -enable -printMachineReadable -lang VHDL FPAcc 11 52 -52 40 34</message>
+   <message level="Info" culprit="fp_acc_custom_0">Latency on Arria 10 is 16 cycles</message>
+  </messages>
+ </entity>
+ <entity
+   kind="altera_fp_acc_custom"
+   version="16.0"
+   name="fpacc64_altera_fp_acc_custom_160_bhzzlly">
+  <parameter name="gen_enable" value="true" />
+  <parameter name="MSBA" value="40" />
+  <parameter name="LSBA" value="-52" />
+  <parameter name="fp_format" value="double" />
+  <parameter name="selected_device_family" value="Arria 10" />
+  <parameter name="maxMSBX" value="34" />
+  <parameter name="selected_device_speedgrade" value="1" />
+  <parameter name="frequency" value="400" />
+  <parameter name="validation_failed" value="false" />
+  <generatedFiles>
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/dspba_library_package.vhd"
+       attributes="" />
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/dspba_library.vhd"
+       attributes="" />
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/fpacc64_altera_fp_acc_custom_160_bhzzlly.vhd"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/dspba_library_package.vhd"
+       attributes="" />
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/dspba_library.vhd"
+       attributes="" />
+   <file
+       path="/home2/rlb1116/pca/fpacc64/altera_fp_acc_custom_160/synth/fpacc64_altera_fp_acc_custom_160_bhzzlly.vhd"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_acc_custom/source/altera_fp_acc_custom_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="fpacc64" as="fp_acc_custom_0" />
+  <messages>
+   <message level="Info" culprit="fpacc64">"Generating: fpacc64_altera_fp_acc_custom_160_bhzzlly"</message>
+   <message level="Debug" culprit="fp_acc_custom_0">/tools/Intel/quartus/16.0.0.211/ip/altera/dsp/altera_fp_acc_custom/source//cmdPolyEval.sh /tools/Intel/quartus/16.0.0.211/quartus/dspba/backend/linux64 -target Arria10 -frequency 400 -name fpacc64_altera_fp_acc_custom_160_bhzzlly -noChanValid -enable -printMachineReadable -lang VHDL FPAcc 11 52 -52 40 34</message>
+   <message level="Info" culprit="fp_acc_custom_0">Latency on Arria 10 is 16 cycles</message>
+  </messages>
+ </entity>
+</deploy>

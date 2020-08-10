@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_fp_acc_custom_160/sim/dspba_library_package.vhd"
+   type="VHDL"
+   library="altera_fp_acc_custom_160" />
+ <file
+   path="altera_fp_acc_custom_160/sim/dspba_library.vhd"
+   type="VHDL"
+   library="altera_fp_acc_custom_160" />
+ <file
+   path="altera_fp_acc_custom_160/sim/fpacc64_altera_fp_acc_custom_160_bhzzlly.vhd"
+   type="VHDL"
+   library="altera_fp_acc_custom_160" />
+ <file path="sim/fpacc64.vhd" type="VHDL" hasInlineConfiguration="true" />
+ <topLevel name="fpacc64" />
+ <deviceFamily name="arria10" />
+</simPackage>

@@ -1,0 +1,20 @@
+# system info fpmult64 on 2019.03.26.17:07:33
+system_info:
+name,value
+DEVICE,10AX048E1F29E1SG
+DEVICE_FAMILY,Arria 10
+GENERATION_ID,1553620053
+#
+#
+# Files generated for fpmult64 on 2019.03.26.17:07:33
+files:
+filepath,kind,attributes,module,is_top
+sim/fpmult64.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,fpmult64,true
+altera_fp_functions_160/sim/dspba_library_package.vhd,VHDL,,fpmult64_altera_fp_functions_160_py4gazy,false
+altera_fp_functions_160/sim/dspba_library.vhd,VHDL,,fpmult64_altera_fp_functions_160_py4gazy,false
+altera_fp_functions_160/sim/fpmult64_altera_fp_functions_160_py4gazy.vhd,VHDL,,fpmult64_altera_fp_functions_160_py4gazy,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+fpmult64.fp_functions_0,fpmult64_altera_fp_functions_160_py4gazy

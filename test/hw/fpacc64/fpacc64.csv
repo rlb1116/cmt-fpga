@@ -1,0 +1,20 @@
+# system info fpacc64 on 2019.03.26.19:18:37
+system_info:
+name,value
+DEVICE,10AX048E1F29E1SG
+DEVICE_FAMILY,Arria 10
+GENERATION_ID,1553627916
+#
+#
+# Files generated for fpacc64 on 2019.03.26.19:18:37
+files:
+filepath,kind,attributes,module,is_top
+sim/fpacc64.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,fpacc64,true
+altera_fp_acc_custom_160/sim/dspba_library_package.vhd,VHDL,,fpacc64_altera_fp_acc_custom_160_bhzzlly,false
+altera_fp_acc_custom_160/sim/dspba_library.vhd,VHDL,,fpacc64_altera_fp_acc_custom_160_bhzzlly,false
+altera_fp_acc_custom_160/sim/fpacc64_altera_fp_acc_custom_160_bhzzlly.vhd,VHDL,,fpacc64_altera_fp_acc_custom_160_bhzzlly,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+fpacc64.fp_acc_custom_0,fpacc64_altera_fp_acc_custom_160_bhzzlly

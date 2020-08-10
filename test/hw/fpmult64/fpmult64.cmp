@@ -1,0 +1,11 @@
+	component fpmult64 is
+		port (
+			a      : in  std_logic_vector(63 downto 0) := (others => 'X'); -- a
+			areset : in  std_logic                     := 'X';             -- reset
+			b      : in  std_logic_vector(63 downto 0) := (others => 'X'); -- b
+			clk    : in  std_logic                     := 'X';             -- clk
+			en     : in  std_logic_vector(0 downto 0)  := (others => 'X'); -- en
+			q      : out std_logic_vector(63 downto 0)                     -- q
+		);
+	end component fpmult64;
+

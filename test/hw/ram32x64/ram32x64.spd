@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="ram_1port_160/sim/ram32x64_ram_1port_160_lcifr2i.v"
+   type="VERILOG"
+   library="ram_1port_160" />
+ <file path="sim/ram32x64.vhd" type="VHDL" hasInlineConfiguration="true" />
+ <topLevel name="ram32x64" />
+ <deviceFamily name="arria10" />
+</simPackage>

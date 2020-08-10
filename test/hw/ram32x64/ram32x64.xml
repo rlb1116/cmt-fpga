@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2019.03.28.20:50:05"
+ outputDirectory="/home2/rlb1116/pca/ram32x64/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Arria 10"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10AX048E1F29E1SG"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="ram_input" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <port name="data" direction="input" role="datain" width="64" />
+   <port name="address" direction="input" role="address" width="5" />
+   <port name="wren" direction="input" role="wren" width="1" />
+   <port name="clock" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="ram_output" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <port name="q" direction="output" role="dataout" width="64" />
+  </interface>
+ </perimeter>
+ <entity kind="ram32x64" version="1.0" name="ram32x64">
+  <parameter name="AUTO_GENERATION_ID" value="1553806205" />
+  <parameter name="AUTO_DEVICE" value="10AX048E1F29E1SG" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Arria 10" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
+  <generatedFiles>
+   <file
+       path="/home2/rlb1116/pca/ram32x64/synth/ram32x64.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home2/rlb1116/pca/ram32x64/synth/ram32x64.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="/home2/rlb1116/pca/ram32x64.qsys" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/tools/Intel/quartus/16.0.0.211/ip/altera/megafunctions/ram_1port/ram_1_port_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="ram32x64">"Generating: ram32x64"</message>
+   <message level="Info" culprit="ram32x64">"Generating: ram32x64_ram_1port_160_lcifr2i"</message>
+  </messages>
+ </entity>
+ <entity kind="ram_1port" version="16.0" name="ram32x64_ram_1port_160_lcifr2i">
+  <parameter name="GUI_CLOCK_ENABLE_INPUT_A" value="false" />
+  <parameter name="GUI_AclrData" value="false" />
+  <parameter name="GUI_NUMWORDS_A" value="32" />
+  <parameter name="DEVICE_FAMILY" value="Arria 10" />
+  <parameter name="GUI_RAM_BLOCK_TYPE" value="Auto" />
+  <parameter name="GUI_SingleClock" value="0" />
+  <parameter name="GUI_AclrAddr" value="false" />
+  <parameter name="GUI_INIT_FILE_LAYOUT" value="PORT_A" />
+  <parameter name="GUI_IMPLEMENT_IN_LES" value="0" />
+  <parameter name="GUI_X_MASK" value="false" />
+  <parameter name="GUI_MAXIMUM_DEPTH" value="0" />
+  <parameter name="GUI_RegOutput" value="true" />
+  <parameter name="GUI_READ_DURING_WRITE_MODE_PORT_A" value="0" />
+  <parameter name="GUI_CLOCK_ENABLE_OUTPUT_A" value="false" />
+  <parameter name="GUI_BYTE_SIZE" value="8" />
+  <parameter name="GUI_rden" value="false" />
+  <parameter name="GUI_JTAG_ID" value="NONE" />
+  <parameter name="GUI_WIDTH_A" value="64" />
+  <parameter name="GUI_RegData" value="true" />
+  <parameter name="GUI_MIFfilename" value="" />
+  <parameter name="GUI_Clken" value="false" />
+  <parameter name="GUI_AclrByte" value="false" />
+  <parameter name="GUI_RegAddr" value="true" />
+  <parameter name="GUI_JTAG_ENABLED" value="false" />
+  <parameter name="GUI_INIT_TO_SIM_X" value="false" />
+  <parameter name="GUI_BYTE_WIDTH" value="8" />
+  <parameter name="GUI_WRCONTROL_ACLR_A" value="false" />
+  <parameter name="GUI_AclrOutput" value="false" />
+  <parameter name="GUI_WIDTHAD_A" value="5" />
+  <parameter name="GUI_ADDRESSSTALL_A" value="false" />
+  <parameter name="GUI_FILE_REFERENCE" value="0" />
+  <parameter name="GUI_BYTE_ENABLE" value="false" />
+  <parameter name="GUI_TBENCH" value="false" />
+  <parameter name="GUI_SclrOutput" value="false" />
+  <parameter name="GUI_MODULE_NAME" value="altera_syncram" />
+  <parameter name="GUI_BlankMemory" value="0" />
+  <generatedFiles>
+   <file
+       path="/home2/rlb1116/pca/ram32x64/ram_1port_160/synth/ram32x64_ram_1port_160_lcifr2i.v"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home2/rlb1116/pca/ram32x64/ram_1port_160/synth/ram32x64_ram_1port_160_lcifr2i.v"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/tools/Intel/quartus/16.0.0.211/ip/altera/megafunctions/ram_1port/ram_1_port_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="ram32x64" as="ram_1port_0" />
+  <messages>
+   <message level="Info" culprit="ram32x64">"Generating: ram32x64_ram_1port_160_lcifr2i"</message>
+  </messages>
+ </entity>
+</deploy>

@@ -1,0 +1,81 @@
+Info: Starting: Create simulation model
+Info: qsys-generate /home2/rlb1116/pca/ram32x64.qsys --simulation=VHDL --allow-mixed-language-simulation --output-directory=/home2/rlb1116/pca/ram32x64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/ram32x64.qsys
+Progress: Reading input file
+Progress: Adding ram_1port_0 [ram_1port 16.0]
+Progress: Parameterizing module ram_1port_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: ram32x64.ram_1port_0: Targeting device family: Arria 10.
+Info: ram32x64: "Transforming system: ram32x64"
+Info: ram32x64: Running transform generation_view_transform
+Info: ram32x64: Running transform generation_view_transform took 0.000s
+Info: ram_1port_0: Running transform generation_view_transform
+Info: ram_1port_0: Running transform generation_view_transform took 0.000s
+Info: ram32x64: Running transform merlin_avalon_transform
+Info: ram32x64: Running transform merlin_avalon_transform took 0.023s
+Info: ram32x64: "Naming system components in system: ram32x64"
+Info: ram32x64: "Processing generation queue"
+Info: ram32x64: "Generating: ram32x64"
+Info: ram32x64: "Generating: ram32x64_ram_1port_160_lcifr2i"
+Info: ram32x64: Done "ram32x64" with 2 modules, 2 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/home2/rlb1116/pca/ram32x64/ram32x64.spd --output-directory=/home2/rlb1116/pca/ram32x64/sim/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=/home2/rlb1116/pca/ram32x64/ram32x64.spd --output-directory=/home2/rlb1116/pca/ram32x64/sim/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in /home2/rlb1116/pca/ram32x64/sim/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Skipping VCS script generation since VHDL file $QUARTUS_INSTALL_DIR/eda/sim_lib/altera_syn_attributes.vhd is required for simulation
+Info: Generating the following file(s) for VCSMX simulator in /home2/rlb1116/pca/ram32x64/sim/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in /home2/rlb1116/pca/ram32x64/sim/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in /home2/rlb1116/pca/ram32x64/sim/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home2/rlb1116/pca/ram32x64.qsys --block-symbol-file --output-directory=/home2/rlb1116/pca/ram32x64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/ram32x64.qsys
+Progress: Reading input file
+Progress: Adding ram_1port_0 [ram_1port 16.0]
+Progress: Parameterizing module ram_1port_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: ram32x64.ram_1port_0: Targeting device family: Arria 10.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home2/rlb1116/pca/ram32x64.qsys --synthesis=VHDL --output-directory=/home2/rlb1116/pca/ram32x64 --family="Arria 10" --part=10AX048E1F29E1SG
+Progress: Loading pca/ram32x64.qsys
+Progress: Reading input file
+Progress: Adding ram_1port_0 [ram_1port 16.0]
+Progress: Parameterizing module ram_1port_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: ram32x64.ram_1port_0: Targeting device family: Arria 10.
+Info: ram32x64: "Transforming system: ram32x64"
+Info: ram32x64: Running transform generation_view_transform
+Info: ram32x64: Running transform generation_view_transform took 0.000s
+Info: ram_1port_0: Running transform generation_view_transform
+Info: ram_1port_0: Running transform generation_view_transform took 0.000s
+Info: ram32x64: Running transform merlin_avalon_transform
+Info: ram32x64: Running transform merlin_avalon_transform took 0.008s
+Info: ram32x64: "Naming system components in system: ram32x64"
+Info: ram32x64: "Processing generation queue"
+Info: ram32x64: "Generating: ram32x64"
+Info: ram32x64: "Generating: ram32x64_ram_1port_160_lcifr2i"
+Info: ram32x64: Done "ram32x64" with 2 modules, 2 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

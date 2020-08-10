@@ -1,0 +1,18 @@
+# system info ram32x64 on 2019.03.28.20:50:04
+system_info:
+name,value
+DEVICE,10AX048E1F29E1SG
+DEVICE_FAMILY,Arria 10
+GENERATION_ID,1553806203
+#
+#
+# Files generated for ram32x64 on 2019.03.28.20:50:04
+files:
+filepath,kind,attributes,module,is_top
+sim/ram32x64.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,ram32x64,true
+ram_1port_160/sim/ram32x64_ram_1port_160_lcifr2i.v,VERILOG,,ram32x64_ram_1port_160_lcifr2i,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+ram32x64.ram_1port_0,ram32x64_ram_1port_160_lcifr2i
