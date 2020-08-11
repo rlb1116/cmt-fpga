@@ -49,8 +49,8 @@
 using namespace std;
 
 #define ELEMENT_SIZE 8
-#define DMAX 131072.0
-#define DMIN -131071.0
+#define DMAX 1024.0
+#define DMIN -1023.0
 
 void printUsage(char *name);
 bool checkUsage(int argc, char *argv[], unsigned long &num_inputs);
@@ -93,6 +93,7 @@ int main(int argc, char *argv[]) {
 
     double kernel_data [kernel_size];
     double data_in [data_in_size];
+    double sw_output [num_outputs];
 
     // Initialize the input and output arrays.
     for (unsigned i=0; i < kernel_size; i++) {
@@ -107,6 +108,7 @@ int main(int argc, char *argv[]) {
 
     for (unsigned i=0; i < num_outputs; i++) {      
       output[i] = 0.0;
+      sw_output[i] = 0.0;
     }   
    
     cout << "Sending memory locations to FPGA." << endl; 
@@ -141,7 +143,6 @@ int main(int argc, char *argv[]) {
 
     cout << "FPGA done. Verifying results in CPU." << endl;
     // Get same output calculated by software
-    double sw_output [num_outputs];
     auto sw_start = chrono::high_resolution_clock::now();	// CPU start time
     getSWoutputDtDsDr(ELEMENT_SIZE, kernel_data, data_in, sw_output);
     auto sw_end = chrono::high_resolution_clock::now();		// CPU end time
@@ -157,6 +158,7 @@ int main(int argc, char *argv[]) {
     for (unsigned i=0; i < num_outputs; i++) {     
       if (!equalDouble((double)output[i], sw_output[i])) {
 	errors ++;
+        cout << "ERROR: output "<< i <<" - FPGA val="<< output[i] <<", CPU val="<< sw_output[i] <<", difference="<< (output[i] - sw_output[i]) << endl;
       }
     }
 
@@ -169,7 +171,7 @@ int main(int argc, char *argv[]) {
       return EXIT_SUCCESS;
     }
     
-    cout << "FAILURE: " << errors << " incorrect outputs." << endl;
+    cout << "FAILURE: " << errors << " / " << num_outputs << " incorrect outputs." << endl;
   }
   // Exception handling for all the runtime errors that can occur within 
   // the AFU wrapper class.

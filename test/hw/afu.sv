@@ -280,7 +280,7 @@ module afu
       );
    //// end width_change_fifo;
 
-   assign expand2dma_en = !dma.full && (expand_full || (ob_empty && pipe_done && !dma.wr_done) );  // TEST: handle partial CL 
+   assign expand2dma_en = !dma.full && (!expand_empty || (ob_empty && pipe_done && !dma.wr_done) );  // TEST: handle partial CL 
    assign dma.wr_en = expand2dma_en;
 
 //################## END OF PIPELINE ################################################//   
@@ -295,13 +295,13 @@ module afu
    // Input cache lines = total inputs/8  (512/64 = 8) 
    int N, input_cl;
    assign N = input_size;	// set by SW thru MMIO; currently must = PIPE_SIZE
-   assign input_cl = (N*N + N*N*N) >> 3;
+   assign input_cl = ((N*N + N*N*N) >> 3) + 1;
    assign dma.rd_size = input_cl; //[CL_ADDR_WIDTH:0];
 
    // Total outputs = N*N*N (data) * 3 (dr, ds, dt) 
    // Output cache lines = total outputs/8 
    int output_cl;
-   assign output_cl = (3*N*N*N) >> 3;
+   assign output_cl = ((3*N*N*N) >> 3) + 1;
    assign dma.wr_size = output_cl; //[CL_ADDR_WIDTH:0];
 
 

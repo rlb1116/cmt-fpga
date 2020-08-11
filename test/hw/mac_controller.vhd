@@ -3,6 +3,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use work.user_pkg.all;
 
 entity mac_controller is
 	generic (
@@ -13,7 +14,7 @@ entity mac_controller is
 		valid_in		: in	std_logic;
 		valid_ram	: in	std_logic;
 		load_ram		: in	std_logic;
-		address		: out std_logic_vector(5-1 downto 0);
+		address		: out std_logic_vector(C_ROOTN-1 downto 0);
 		wren			: out std_logic;
 		mul_en		: out std_logic;
 		acc_en		: out std_logic;
@@ -32,13 +33,13 @@ signal v_acc_1, v_acc_2, v_acc_3, v_acc_4, v_acc_5, v_acc_6, v_acc_7, v_acc_8, v
 
 signal loading_ram : std_logic;	-- indicate if ram is being loaded (no new calculations)
 -- counters for tracking sets of data/operations 
-signal count_ram_in, count_acc_in, count_acc_out : std_logic_vector(5-1 downto 0);
-signal cnt_ram_inc, cnt_ram_clr, cnt_ao_clr, cnt_ai_clr : std_logic := '0';
+signal count_ram_in, count_acc_in, count_acc_out : std_logic_vector(C_ROOTN-1 downto 0);
+signal cnt_ram_inc, cnt_ao_inc, cnt_ram_clr, cnt_ao_clr, cnt_ai_clr : std_logic := '0';
 
 begin
 
 	RAM_COUNTER : entity work.counter
-		generic map (width => 5, max => N-1)
+		generic map (width => C_ROOTN, max => N-1)
 		port map (
 			clk		=> clk,
 			a_rst		=> a_rst,
@@ -53,7 +54,7 @@ begin
 	wren <= valid_ram;	-- can add loading_ram state if need be
 	
 	ACC_COUNT_IN : entity work.counter
-		generic map (width => 5, max => N-1)
+		generic map (width => C_ROOTN, max => N-1)
 		port map (
 			clk		=> clk,
 			a_rst		=> a_rst,
@@ -64,14 +65,15 @@ begin
 	new_acc <= '1' when count_acc_in = "00000" else '0';
 	
 	ACC_COUNT_OUT : entity work.counter
-		generic map (width => 5, max => N-1)
+		generic map (width => C_ROOTN, max => N-1)
 		port map (
 			clk		=> clk,
 			a_rst		=> a_rst,
-			inc		=> v_acc_out,
+			inc		=> cnt_ao_inc,
 			clr		=> a_rst,	
 			count		=> count_acc_out
 		);
+	cnt_ao_inc <= v_acc_out;-- and v_mul_out;	--test
 		
 	process (count_acc_out, v_acc_out)
 	-- set valid_out signal corresponding to when full accumulation finishes
@@ -158,8 +160,5 @@ begin
 
 
 end architecture bhv;
-
-
-
 
 

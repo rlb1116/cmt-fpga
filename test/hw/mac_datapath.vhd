@@ -3,6 +3,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use work.user_pkg.all;
 
 entity mac_datapath is 
 	generic (
@@ -14,7 +15,7 @@ entity mac_datapath is
 		acc_en		: in	std_logic;
 		mul_en		: in  std_logic;
 		wren			: in 	std_logic;
-		address		: in 	std_logic_vector(5-1 downto 0);
+		address		: in 	std_logic_vector(C_ROOTN-1 downto 0);
 		ram_data_in	: in	std_logic_vector(width-1 downto 0);
 		mul_data_in	: in	std_logic_vector(width-1 downto 0);
 		data_out		: out std_logic_vector(width-1 downto 0)

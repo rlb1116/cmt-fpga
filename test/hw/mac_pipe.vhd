@@ -3,6 +3,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use work.user_pkg.all;
 
 entity mac_pipe is 
 	generic (
@@ -23,8 +24,8 @@ end entity mac_pipe;
 
 architecture str of mac_pipe is
 signal new_acc_s, acc_en_s, mul_en_s, wren_s : std_logic;
-signal address_s : std_logic_vector(5-1 downto 0);
-
+signal address_s : std_logic_vector(C_ROOTN-1 downto 0);	--add C_ROOTN
+signal mul_data_s : std_logic_vector(width-1 downto 0);
 begin
 
 	U_DATAPATH : entity work.mac_datapath
@@ -38,7 +39,7 @@ begin
 			wren			=> wren_s,
 			address		=> address_s,
 			ram_data_in	=> ram_data_in,
-			mul_data_in	=> mul_data_in,
+			mul_data_in	=> mul_data_s,	-- feed 0 when !valid_in
 			data_out		=> data_out
 		);
 	
@@ -57,6 +58,15 @@ begin
 			new_acc		=> new_acc_s,
 			valid_out	=> valid_out
 		);
+
+	process (mul_data_in, valid_in)
+	begin
+		if (valid_in = '1') then
+			mul_data_s <= mul_data_in;
+		else 
+			mul_data_s <= (others => '0');
+		end if;
+	end process;
 
 end architecture str;
 
