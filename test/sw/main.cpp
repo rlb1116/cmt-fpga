@@ -120,12 +120,15 @@ int main(int argc, char *argv[]) {
     // The FPGA DMA only handles cache-line transfers, so we need to convert
     // the input array size to cache lines. We could also do this conversion 
     // on the FPGA and transfer the number of inputs instead here.
-    // The number of output cache lines is calculated by the FPGA.
-//    unsigned total_bytes = num_inputs*sizeof(double);
-//    unsigned num_cls = ceil((float) total_bytes / (float) AFU::CL_BYTES);
-    // **Don't send # cache lines, HW expects element_size
+    // Same calculation for number of output cache lines.
+    unsigned total_bytes_in = num_inputs*sizeof(double);
+    unsigned num_cls_in = ceil((float) total_bytes_in / (float) AFU::CL_BYTES);
+    unsigned total_bytes_out = num_outputs*sizeof(double);
+    unsigned num_cls_out = ceil((float) total_bytes_out / (float) AFU::CL_BYTES);
+
 //    cout << "Sending array dimensions; FPGA will calculate total size." << endl;
-    afu.write(MMIO_SIZE, ELEMENT_SIZE);
+    afu.write(MMIO_IN_SIZE, num_cls_in);
+    afu.write(MMIO_OUT_SIZE, num_cls_out);
 
 //    cout << "Sending GO signal to FPGA." << endl;
 
