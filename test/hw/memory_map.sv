@@ -19,14 +19,15 @@
 // Module Name:  memory_map.sv
 // Description:  This module implements a memory map for the simple pipeline.
 //
-//               The memory map provides 4 inputs to the circuit:
-//               go         : h0050,
-//               rd_addr    : h0052,
-//               wr_addr    : h0054,
-//               input_size : h0056
+//               The memory map provides 5 inputs to the circuit:
+//               go          : h0050,
+//               rd_addr     : h0052,
+//               wr_addr     : h0054,
+//               input_size  : h0056,
+//               output_size : h0058
 //
 //               and provides one output to software:
-//               done    : h0058
+//               done    : h005A
 //
 //               rd_addr and wr_addr are both 64-bit virtual byte addresses.
 //               input_size is the number of input cache lines to transfer
@@ -50,6 +51,7 @@
 // rd_addr : the starting read address for the DMA transfer
 // wr_addr : the starting write address for the DMA transfer
 // input_size : the number of input cache lines to transfer
+// output_size : the number of output cache lines to transfer
 // go      : starts the DMA transfer
 // done    : Asserted when the DMA transfer is complete
 //==========================================================================
@@ -67,6 +69,7 @@ module memory_map
    
    output logic [ADDR_WIDTH-1:0] rd_addr, wr_addr,
    output logic [SIZE_WIDTH-1:0] input_size,
+   output logic [SIZE_WIDTH-1:0] output_size,
    output logic        go,
    input logic 	       done   
    );
@@ -76,20 +79,22 @@ module memory_map
    // =============================================================//     
    always_ff @(posedge clk or posedge rst) begin 
       if (rst) begin
-	 go 	    <= '0;
-	 rd_addr    <= '0;
-	 wr_addr    <= '0;	     
-	 input_size <= '0;
+	 go 	     <= '0;
+	 rd_addr     <= '0;
+	 wr_addr     <= '0;	     
+	 input_size  <= '0;
+         output_size <= '0;
       end
       else begin
 	 go <= '0;
  	 	 	 
          if (mmio.wr_en == 1'b1) begin
             case (mmio.wr_addr)
-              16'h0050: go 	   <= mmio.wr_data[0];
-	      16'h0052: rd_addr    <= mmio.wr_data[$size(rd_addr)-1:0];
-	      16'h0054: wr_addr    <= mmio.wr_data[$size(wr_addr)-1:0];
-	      16'h0056: input_size <= mmio.wr_data[$size(input_size)-1:0];
+              16'h0050: go 	    <= mmio.wr_data[0];
+	      16'h0052: rd_addr     <= mmio.wr_data[$size(rd_addr)-1:0];
+	      16'h0054: wr_addr     <= mmio.wr_data[$size(wr_addr)-1:0];
+	      16'h0056: input_size  <= mmio.wr_data[$size(input_size)-1:0];
+              16'h0058: output_size <= mmio.wr_data[$size(output_size)-1:0];
             endcase
          end
       end
@@ -109,10 +114,11 @@ module memory_map
 	    
             case (mmio.rd_addr)
 
-	      16'h0052: mmio.rd_data[$size(rd_addr)-1:0]    <= rd_addr;
-	      16'h0054: mmio.rd_data[$size(wr_addr)-1:0]    <= wr_addr;
-	      16'h0056: mmio.rd_data[$size(input_size)-1:0] <= input_size;     
-	      16'h0058: mmio.rd_data[0] 		    <= done;
+	      16'h0052: mmio.rd_data[$size(rd_addr)-1:0]     <= rd_addr;
+	      16'h0054: mmio.rd_data[$size(wr_addr)-1:0]     <= wr_addr;
+	      16'h0056: mmio.rd_data[$size(input_size)-1:0]  <= input_size;     
+              16'h0058: mmio.rd_data[$size(output_size)-1:0] <= output_size;
+	      16'h005A: mmio.rd_data[0] 		     <= done;
 	      
 	      // If the processor requests an address that is unused, return 0.
               default:  mmio.rd_data 			    <= 64'h0;

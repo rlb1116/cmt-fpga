@@ -102,6 +102,7 @@ module afu
    // module instantiation.
    typedef logic [CL_ADDR_WIDTH:0] count_t;   
    count_t 	input_size;
+   count_t      output_size;
    logic 	go;
    logic 	done;
 
@@ -293,16 +294,16 @@ module afu
    // Input_size from software will be N (element_size) 
    // Total inputs = N*N (kernel) + N*N*N (data) 64-bit numbers
    // Input cache lines = total inputs/8  (512/64 = 8) 
-   int N, input_cl;
-   assign N = input_size;	// set by SW thru MMIO; currently must = PIPE_SIZE
-   assign input_cl = ((N*N + N*N*N) >> 3) + 1;
-   assign dma.rd_size = input_cl; //[CL_ADDR_WIDTH:0];
+   //int N, input_cl;
+   //assign N = input_size;	// set by SW thru MMIO; currently must = PIPE_SIZE
+   //assign input_cl = ((N*N + N*N*N) >> 3) + 1;
+   assign dma.rd_size = input_size; //[CL_ADDR_WIDTH:0];
 
    // Total outputs = N*N*N (data) * 3 (dr, ds, dt) 
    // Output cache lines = total outputs/8 
-   int output_cl;
-   assign output_cl = ((3*N*N*N) >> 3) + 1;
-   assign dma.wr_size = output_cl; //[CL_ADDR_WIDTH:0];
+   //int output_cl;
+   //assign output_cl = ((3*N*N*N) >> 3) + 1;
+   assign dma.wr_size = output_size; //[CL_ADDR_WIDTH:0];
 
 
    // Start both the read and write channels when the MMIO go is received.
