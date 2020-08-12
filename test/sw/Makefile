@@ -10,7 +10,7 @@ OBJDIR = obj
 CFLAGS += -I./$(OBJDIR)
 CPPFLAGS += -I./$(OBJDIR) -I$(BBB_DIR)
 
-LDFLAGS += -L/home/UFAD/rlb1116/usr/local/lib64 -lopae-cxx-core -lMPF-cxx -lMPF
+LDFLAGS += -lopae-cxx-core -lMPF-cxx -lMPF
 
 # Files and folders
 SRCS = main.cpp AFU.cpp

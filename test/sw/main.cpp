@@ -112,6 +112,7 @@ int main(int argc, char *argv[]) {
     }   
    
     cout << "Sending memory locations to FPGA." << endl; 
+    auto mm_start = chrono::high_resolution_clock::now();       // MMIO start time
     // Inform the FPGA of the starting addresses of the arrays.
     afu.write(MMIO_RD_ADDR, (uint64_t) input);
     afu.write(MMIO_WR_ADDR, (uint64_t) output);
@@ -120,19 +121,20 @@ int main(int argc, char *argv[]) {
     // the input array size to cache lines. We could also do this conversion 
     // on the FPGA and transfer the number of inputs instead here.
     // The number of output cache lines is calculated by the FPGA.
-    unsigned total_bytes = num_inputs*sizeof(double);
-    unsigned num_cls = ceil((float) total_bytes / (float) AFU::CL_BYTES);
+//    unsigned total_bytes = num_inputs*sizeof(double);
+//    unsigned num_cls = ceil((float) total_bytes / (float) AFU::CL_BYTES);
     // **Don't send # cache lines, HW expects element_size
-    cout << "Sending array dimensions; FPGA will calculate total size." << endl;
+//    cout << "Sending array dimensions; FPGA will calculate total size." << endl;
     afu.write(MMIO_SIZE, ELEMENT_SIZE);
 
-    cout << "Sending GO signal to FPGA." << endl;
+//    cout << "Sending GO signal to FPGA." << endl;
 
     // Start the FPGA DMA transfer (cleared automatically by the AFU).
-    afu.write(MMIO_GO, 1);  
+    afu.write(MMIO_GO, 1);
+    auto mm_end = chrono::high_resolution_clock::now();       // MMIO end time  
     auto hw_start = chrono::high_resolution_clock::now();       // FPGA start time
 
-    cout << "Waiting for DONE signal from FPGA." << endl;
+//    cout << "Waiting for DONE signal from FPGA." << endl;
     // Wait until the FPGA is done.
     while (afu.read(MMIO_DONE) == 0) {
 #ifdef SLEEP_WHILE_WAITING
@@ -149,9 +151,11 @@ int main(int argc, char *argv[]) {
 
     double hw_time = chrono::duration_cast<chrono::nanoseconds>(hw_end - hw_start).count();	// nanoseconds
     double sw_time = chrono::duration_cast<chrono::nanoseconds>(sw_end - sw_start).count();
+    double mm_time = chrono::duration_cast<chrono::nanoseconds>(mm_end - mm_start).count();
 
+    cout << "MMIO overhead time:    " << mm_time << " ns." << endl;
     cout << "FPGA calculation time: " << hw_time << " ns." << endl;
-    cout << "CPU calculation time: " << sw_time << " ns." << endl;
+    cout << "CPU calculation time:  " << sw_time << " ns." << endl;
 
     // Verify the output.
     unsigned errors = 0;
