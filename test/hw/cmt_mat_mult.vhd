@@ -25,6 +25,8 @@ architecture str of cmt_mat_mult is
 	signal vld_load2pipe : std_logic_vector(N-1 downto 0);
 	signal data_pipe2coll : std_logic_vector(N*width-1 downto 0);
 	signal vld_pipe2coll : std_logic_vector(N-1 downto 0);
+	signal data_in_d : std_logic_vector(width-1 downto 0);
+	signal data_in_vld_d : std_logic;
 begin
 
 	U_LOADER : entity work.input_loader 
@@ -47,8 +49,8 @@ begin
 				load_ram		=> a_rst,
 				ram_data_in	=> kernel_load2pipe,
 				valid_ram	=> vld_load2pipe(I),
-				mul_data_in	=> data_in,
-				valid_in		=> data_in_vld,
+				mul_data_in	=> data_in_d,
+				valid_in		=> data_in_vld_d,
 				data_out		=> data_pipe2coll((I+1)*width-1 downto I*width),
 				valid_out	=> vld_pipe2coll(I)
 			);
@@ -65,9 +67,19 @@ begin
 			valid_out	=> data_out_vld
 		);
 
+	process(clk, a_rst)
+	-- Delay data_in and "_vld 1 cycle to match delay of input_loader 
+	begin
+		if (a_rst = '1') then
+			data_in_d <= (others => '0');
+			data_in_vld_d <= '0';
+		elsif (clk'event and clk = '1') then
+			data_in_vld_d <= data_in_vld;
+			data_in_d <= data_in;
+		end if;
+
+	end process;
+
 end architecture str;
-
-
-
 
 

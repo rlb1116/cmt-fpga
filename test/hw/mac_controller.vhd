@@ -73,7 +73,7 @@ begin
 			clr		=> a_rst,	
 			count		=> count_acc_out
 		);
-	cnt_ao_inc <= v_acc_out;-- and v_mul_out;	--test
+	cnt_ao_inc <= v_acc_out;
 		
 	process (count_acc_out, v_acc_out)
 	-- set valid_out signal corresponding to when full accumulation finishes

@@ -130,12 +130,16 @@ begin
 
         if (wr_internal = '1' and count_v < RATIO) then
 
-            next_data(0) <= input_internal;
+            --next_data(0) <= input_internal;
 
-            for i in 0 to RATIO-2 loop
-                next_data(i+1) <= data(i);
-            --next_tag(i+1)  <= tag(i);
-            end loop;  -- i
+            --for i in 0 to RATIO-2 loop
+            --    next_data(i+1) <= data(i);
+            ----next_tag(i+1)  <= tag(i);
+            --end loop;  -- i
+
+            -- Load data directly into correct location rather than successively shifting
+            -- This allows for partial CL to maintain correct data order w/o padding
+            next_data(RATIO-count_v-1) <= input_internal;
 
             count_v := count_v + 1;
         end if;
