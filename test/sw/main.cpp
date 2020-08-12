@@ -110,12 +110,6 @@ int main(int argc, char *argv[]) {
       output[i] = 0.0;
       sw_output[i] = 0.0;
     }   
-   
-    cout << "Sending memory locations to FPGA." << endl; 
-    auto mm_start = chrono::high_resolution_clock::now();       // MMIO start time
-    // Inform the FPGA of the starting addresses of the arrays.
-    afu.write(MMIO_RD_ADDR, (uint64_t) input);
-    afu.write(MMIO_WR_ADDR, (uint64_t) output);
 
     // The FPGA DMA only handles cache-line transfers, so we need to convert
     // the input array size to cache lines. We could also do this conversion 
@@ -125,6 +119,12 @@ int main(int argc, char *argv[]) {
     unsigned num_cls_in = ceil((float) total_bytes_in / (float) AFU::CL_BYTES);
     unsigned total_bytes_out = num_outputs*sizeof(double);
     unsigned num_cls_out = ceil((float) total_bytes_out / (float) AFU::CL_BYTES);
+   
+    cout << "Sending memory locations to FPGA." << endl; 
+    auto mm_start = chrono::high_resolution_clock::now();       // MMIO start time
+    // Inform the FPGA of the starting addresses of the arrays.
+    afu.write(MMIO_RD_ADDR, (uint64_t) input);
+    afu.write(MMIO_WR_ADDR, (uint64_t) output);
 
 //    cout << "Sending array dimensions; FPGA will calculate total size." << endl;
     afu.write(MMIO_IN_SIZE, num_cls_in);
